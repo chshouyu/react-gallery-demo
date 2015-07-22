@@ -14,7 +14,7 @@ var ListView = React.createClass({
         };
     },
     componentDidMount () {
-        util.ajax('/data/list.json').then((list) => {
+        util.ajax('data/list.json').then((list) => {
             if (list && util.isArray(list)) {
                 this.setState({
                     list: list
