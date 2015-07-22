@@ -1,0 +1,6 @@
+node_modules/
+dest/*.js
+dest/*.jpg
+*.zip
+build/
+test*
