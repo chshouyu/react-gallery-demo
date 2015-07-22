@@ -1,4 +1,6 @@
 
+require('../css/list.less');
+
 var React = require('react');
 
 var Item = require('./item.js');
@@ -28,7 +30,7 @@ var ListView = React.createClass({
     render () {
         var nodes = this.state.list.map((item, index) => <Item key={ index } item={ item } />);
         return (
-            <ul>{ nodes }</ul>
+            <ul className="list">{ nodes }</ul>
         );
     }
 });
