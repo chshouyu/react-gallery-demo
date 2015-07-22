@@ -15,7 +15,7 @@ var ListView = React.createClass({
         var self = this;
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
-            if (this.status === 200) {
+            if (this.status === 200 || this.status === 304) {
                 if (Array.isArray(this.response)) {
                     self.setState({
                         list: this.response
