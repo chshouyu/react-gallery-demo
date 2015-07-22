@@ -4,12 +4,14 @@ require('../css/base.less');
 
 var React = require('react');
 
+var ListView = require('./list.js');
+
 var App = React.createClass({
 
     render () {
 
         return (
-            <div>hello</div>
+            <ListView />
         );
     }
 });
