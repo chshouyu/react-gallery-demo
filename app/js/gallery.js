@@ -3,7 +3,7 @@ require('../css/gallery.less');
 
 var React = require('react');
 
-var IScroll = require('./lib/iscroll-probe.js');
+var IScroll = require('iScroll');
 
 var cx = React.addons.classSet;
 

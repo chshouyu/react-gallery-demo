@@ -9,7 +9,7 @@ var config = {
   },
   entry: {
     app: ['./app/js/app.js'],
-    vendors: ['react']
+    vendors: ['react', 'iScroll']
   },
   resolve: {
     alias: {}
@@ -41,5 +41,6 @@ var config = {
 };
 
 config.addVendor('react', nodemodules_dir + '/react/dist/react-with-addons.min.js');
+config.addVendor('iScroll', __dirname + '/app/js/lib/iscroll-probe.js');
 
 module.exports = config;
