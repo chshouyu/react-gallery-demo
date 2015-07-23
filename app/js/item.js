@@ -22,7 +22,7 @@ var Item = React.createClass({
 
         var imgNodes = this.props.item.imgList.map((src, index) => {
             return (
-                <a href="javascript:;" key={ index }>
+                <a href="javascript:;" key={ index } onClick={ this.props.showGallery.bind(null, index) }>
                     <img src={ src } />
                 </a>
             );
