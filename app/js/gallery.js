@@ -5,6 +5,8 @@ var React = require('react');
 
 var cx = React.addons.classSet;
 
+var windowWidth = window.innerWidth;
+
 var Gallery = React.createClass({
     getInitialState () {
         return {
@@ -27,11 +29,15 @@ var Gallery = React.createClass({
 
         var imgNodes = this.props.imgList.map((img, index) => {
             return (
-                <li key={ index } onClick={ this.hide }>
+                <li key={ index } onClick={ this.hide } style={ {width: `${ windowWidth }px`} }>
                     <img src={ img } />
                 </li>
             );
         });
+
+        var listStyle = {
+            width: `${ this.props.imgList.length * windowWidth }px`
+        };
 
         var classes = cx({
             'gallery': true,
@@ -40,7 +46,7 @@ var Gallery = React.createClass({
 
         return (
             <div className={ classes }>
-                <ul>{ imgNodes }</ul>
+                <ul style={ listStyle }>{ imgNodes }</ul>
             </div>
         );
     }
