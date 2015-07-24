@@ -1,10 +1,16 @@
 
 .list {
     background-color: #fff;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
 
     li {
         padding: 10px;
         border-bottom: 1px solid #999;
+
+        &:last-child {
+            border-bottom: none;
+        }
         
         p {
             font-size: 16px;

@@ -4,6 +4,7 @@ require('../css/base.less');
 
 var React = require('react');
 
+var Timer = require('./timer.js')
 var ListView = require('./list.js');
 
 var App = React.createClass({
@@ -11,7 +12,10 @@ var App = React.createClass({
     render () {
 
         return (
-            <ListView />
+            <div>
+                <Timer />
+                <ListView />
+            </div>
         );
     }
 });
