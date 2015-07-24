@@ -5,64 +5,40 @@ var React = require('react');
 
 var IScroll = require('iScroll');
 
-var cx = React.addons.classSet;
-
 var windowWidth = window.innerWidth;
-var iscrollInstance = null;
 
 var Gallery = React.createClass({
     getInitialState () {
         return {
-            isShow: false,
-            currPage: 0
+            currPage: this.props.initImgIndex
         };
     },
-    componentWillReceiveProps (nextProps) {
+    componentDidMount () {
+        this.iscrollInstance = new IScroll(React.findDOMNode(this), {
+            eventPassthrough: true,
+            scrollX: true,
+            scrollY: false,
+            snap: true,
+            momentum: false
+        });
 
-        if (nextProps.currIndex > -1) {
+        this.iscrollInstance.on('scrollEnd', () => {
             this.setState({
-                isShow: true,
-                currPage: nextProps.currIndex
-            }, () => {
-                if (!iscrollInstance) {
-                    iscrollInstance = new IScroll(React.findDOMNode(this), {
-                        eventPassthrough: true,
-                        scrollX: true,
-                        scrollY: false,
-                        snap: true,
-                        momentum: false
-                    });
-
-                    iscrollInstance.on('scrollEnd', () => {
-                        this.setState({
-                            currPage: iscrollInstance.currentPage.pageX
-                        });
-                    });
-                }
-
-                iscrollInstance.refresh();
-                
-                iscrollInstance.goToPage(this.props.currIndex, 0, 0);
+                currPage: this.iscrollInstance.currentPage.pageX
             });
-        }
-        
+        });
+
+        this.iscrollInstance.goToPage(this.state.currPage, 0, 0);
     },
     componentWillUnmount () {
-        if (iscrollInstance) {
-            iscrollInstance.destroy();
-            iscrollInstance = null;
-        }
-    },
-    hide () {
-        this.setState({
-            isShow: false
-        });
+        this.iscrollInstance.destroy();
+        this.iscrollInstance = null;
     },
     render () {
 
         var imgNodes = this.props.imgList.map((img, index) => {
             return (
-                <li key={ index } onClick={ this.hide } style={ {width: `${ windowWidth }px`} }>
+                <li key={ index } onClick={ this.props.hideGallery } style={ {width: `${ windowWidth }px`} }>
                     <img src={ img } />
                 </li>
             );
@@ -72,13 +48,8 @@ var Gallery = React.createClass({
             width: `${ this.props.imgList.length * windowWidth }px`
         };
 
-        var classes = cx({
-            'gallery': true,
-            'show': this.state.isShow
-        });
-
         return (
-            <div className={ classes }>
+            <div className="gallery">
                 <ul style={ listStyle }>{ imgNodes }</ul>
                 <div className="pager">{ this.state.currPage + 1 } / { this.props.imgList.length }</div>
             </div>

@@ -31,6 +31,11 @@ var ListView = React.createClass({
             imgIndex: imgIndex
         });
     },
+    hideGallery () {
+        this.setState({
+            imgIndex: -1
+        });
+    },
     render () {
 
         var nodes = this.state.list.map((item, index) => <Item key={ index } item={ item } showGallery={ this.showGallery.bind(null, index) } />);
@@ -42,7 +47,7 @@ var ListView = React.createClass({
         return (
             <div>
                 <ul className="list">{ nodes }</ul>
-                <Gallery imgList={ imgList } currIndex={ this.state.imgIndex } />
+                { this.state.imgIndex > -1 ? <Gallery imgList={ imgList } initImgIndex={ this.state.imgIndex } hideGallery={ this.hideGallery } /> : null }
             </div>
         );
     }
