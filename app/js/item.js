@@ -3,13 +3,18 @@ var React = require('react');
 
 var cx = React.addons.classSet;
 
-var CONTENT_LENGTH = 36;
-
 var Item = React.createClass({
     getInitialState () {
         return {
-            showAll: false
+            showAll: false,
+            contentHeight: 0
         };
+    },
+    componentDidMount () {
+        var contentNode = React.findDOMNode(this.refs.content);
+        this.setState({
+            contentHeight: contentNode.clientHeight
+        });
     },
     toggleAll () {
         this.setState((state) => {
@@ -29,20 +34,24 @@ var Item = React.createClass({
         });
 
         var content = this.props.item.content;
-        var showMore = content.length > CONTENT_LENGTH;
+        var showMore = this.state.contentHeight > 48;
 
-        var classes = cx({
+        var moreClasses = cx({
             'more': true,
             'open': this.state.showAll
         });
 
+        var contentClasses = cx({
+            'close': !this.state.showAll && showMore
+        });
+
         return (
             <li>
-                <p onClick={ showMore ? this.toggleAll : null }>{ this.state.showAll ? content : content.slice(0, CONTENT_LENGTH) }</p>
+                <p className={ contentClasses } ref="content" onClick={ showMore ? this.toggleAll : null }>{ content }</p>
                 <div className="img-list">
                     { imgNodes }
                 </div>
-                { showMore ? <a href="javascript:;" className={ classes } onClick={ this.toggleAll }></a> : null }
+                { showMore ? <a href="javascript:;" className={ moreClasses } onClick={ this.toggleAll }></a> : null }
             </li>
         );
     }
