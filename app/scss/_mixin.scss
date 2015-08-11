@@ -1,4 +1,5 @@
 @mixin display-flex($justify-content: start, $align-items: start) {
+    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
     -webkit-box-pack: $justify-content;
