@@ -1,5 +1,5 @@
 
-require('../css/gallery.less');
+require('../scss/gallery.scss');
 
 var React = require('react');
 

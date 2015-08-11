@@ -1,5 +1,5 @@
 
-require('../css/list.less');
+require('../scss/list.scss');
 
 var React = require('react');
 

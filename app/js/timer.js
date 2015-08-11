@@ -1,5 +1,5 @@
 
-require('../css/timer.less');
+require('../scss/timer.scss');
 
 var React = require('react');
 

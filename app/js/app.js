@@ -1,5 +1,5 @@
 
-require('../css/base.less');
+require('../scss/base.scss');
 
 
 var React = require('react');
