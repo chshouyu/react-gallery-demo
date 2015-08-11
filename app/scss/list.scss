@@ -1,17 +1,13 @@
+@import 'mixin';
 
 .list {
     background-color: #fff;
-    border-top: 1px solid #999;
-    border-bottom: 1px solid #999;
+    @include border1px(#999, (top, bottom));
 
     li {
         padding: 10px;
-        border-bottom: 1px solid #999;
+        @include border1px(#999, (bottom), true);
 
-        &:last-child {
-            border-bottom: none;
-        }
-        
         p {
             font-size: 16px;
             line-height: 24px;

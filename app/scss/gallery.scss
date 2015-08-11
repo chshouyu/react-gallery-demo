@@ -1,3 +1,4 @@
+@import 'mixin';
 
 .gallery {
     position: fixed;
@@ -12,12 +13,9 @@
         position: absolute;
         top: 0;
         left: 0;
-        display: -webkit-flex;
-        display: flex;
         height: 100%;
-        -webkit-align-items: center;
-        align-items: center;
         overflow: hidden;
+        @include display-flex(center, center);    
 
         li {
             float: left;
