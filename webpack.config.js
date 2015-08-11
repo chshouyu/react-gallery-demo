@@ -35,9 +35,6 @@ var config = {
       test: /\.(png|jpg|gif)$/,
       loader: 'url-loader?limit=25000'
     }, {
-      test: /\.less$/,
-      loader: 'style!css!less'
-    }, {
       test: /\.(scss|sass)$/,
       loader: 'style!css!sass?outputStyle=expanded'
     }]
