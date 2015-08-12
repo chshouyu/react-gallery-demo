@@ -1,6 +1,6 @@
 # react-gallery-demo
 
-使用[Reacjs](http://facebook.github.io/react/)做的示例
+使用[Reactjs](http://facebook.github.io/react/)开发的示例
 
 效果如图所示
 
